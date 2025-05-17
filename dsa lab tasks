@@ -1,0 +1,1565 @@
+# -2025-DSA-LAB-TASKS-
+...................LAB#01......................
+           <<<<<<< TASK 01 >>>>>>>
+
+#include<iostream>
+using namespace std;
+int main() {
+    int arr[8] = {10, 20, 30, 40, 50, 60, 70, 80};
+    cout << "Original array: ";
+    for (int i = 0; i < 8; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    for (int i = 0; i < 7; i++) {
+        arr[i] = arr[i + 1];
+    }
+    arr[6] = 0;
+    cout << "Array after deleting the first and last elements: ";
+    for (int i = 0; i < 7; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+          <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[8] = {10, 20, 30, 40, 50, 60, 70, 80};
+    int index, newValue;
+    cout << "Original array: ";
+    for (int i = 0; i < 8; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    cout << "Enter the index : ";
+    cin >> index;
+    if (index >= 0 || index < 8) {
+        cout << "Enter the new value: ";
+        cin >> newValue;
+        arr[index] = newValue;
+        cout << "Updated array: ";
+        for (int i = 0; i < 8; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    } else {
+        cout << "Invalid index." << endl;
+    }
+    return 0;
+}
+            <<<<<<< TASK 03 >>>>>>>
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[8] = {10, 20, 30, 40, 50, 60, 70, 80};
+    cout << "Original array: ";
+    for (int i = 0; i < 8; i++) {
+        cout << arr[i] << " " << endl;
+    }
+    cout << "enter elements in reverse order:";
+    for (int i = 7; i > 0; i--) {
+        cout << arr[i] << " " << endl;
+    }
+    return 0;
+}
+            ..................LAB#02......................
+                     <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+int main() 
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
+    for (int i = 0; i < 5; ++i) 
+	{
+        cout << "Element" << i+1 <<" : " << *ptr << endl;
+        ptr++;
+    }
+    return 0;
+}
+                       <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+void change(int *a, int *b) {
+    int temp = *a;  
+    *a = *b;        
+    *b = temp;      
+}
+int main() {
+    int x = 5, y = 10;
+    cout << "Before changing x: "<<endl;
+	cout<<  x << " y = " << y << endl;
+    change(&x, &y);
+    cout << "After changing x:"<<endl;
+	cout << x << " y = " << y << endl;
+    return 0;
+}
+                    ..................LAB#03......................
+                              <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    int* arr = new int[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n ; i++) {
+        cin >> arr[i];
+}
+ for (int i = 0; i < n ; i++)
+ {
+      int even=0, odd=0;
+        if (arr[i] % 2 == 0)
+            even++;
+        else
+            odd++;
+        }
+    }
+    cout << "even numbers: " << even << endl;
+    cout << "odd numbers: " << odd << endl;
+    delete[] arr;
+    return 0;
+}
+                       <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+int main()
+ {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int* arr = new int[n]; 
+    cout << "Enter numbers: ";
+     for (int i = 0; i < n ; i++)
+	 {
+    cin >> arr[i];
+	}
+    int max = arr[0], min = arr[0];
+    for (int i = 1; i < n; i++) {
+        cin >> arr[i];
+        if (arr[i] > max) max = arr[i];
+        if (arr[i] < min) min = arr[i];
+    }
+    cout << "Maximum: " << max  << endl;
+    cout << "Minimum: " << max  << endl;
+    delete[] arr; 
+    return 0;
+}
+                           ..................LAB#04......................
+                                    <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+};
+
+void insertEnd(Node*& head, int value)
+ {
+    Node* newNode = new Node;
+    newNode->data = value;
+    newNode->next = NULL;
+    if (head == NULL) 
+	{
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next != NULL)
+	 {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+void display(Node* head) 
+{
+    Node* temp = head;
+    while (temp != NULL)
+	 {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL:"<<endl;
+}
+int main() 
+{
+    Node* head = NULL; 
+    insertEnd(head, 10);
+    insertEnd(head, 20);
+    insertEnd(head, 30);
+    insertEnd(head, 40);
+    cout << "Linked List: ";
+    display(head);
+    return 0;
+}
+                            <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node 
+{
+    int data;
+    Node* next;
+};
+
+Node* head = NULL; 
+
+void addNode(int value) 
+{
+    Node* newNode = new Node{value, NULL};
+    if (!head) 
+	{
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = newNode;
+}
+void deleteAtStart()
+ {
+    if (!head) return;
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+}
+void deleteAtPosition(int pos)
+ {
+    if (!head) return;
+    if (pos == 1) { deleteAtStart(); 
+	return; 
+	}
+    Node* temp = head;
+    for (int i = 1; temp && i < pos - 1; i++)
+        temp = temp->next;
+    if (!temp || !temp->next)
+	 return;
+    Node* delNode = temp->next;
+    temp->next = temp->next->next;
+    delete delNode;
+}
+void deleteAtEnd()
+ {
+    if (!head) return;
+    if (!head->next) 
+	{ delete head; head = NULL;
+	 return;
+	  }
+    Node* temp = head;
+    while (temp->next->next) temp = temp->next;
+    delete temp->next;
+    temp->next = NULL;
+}
+void printList() {
+    Node* temp = head;
+    while (temp) 
+	{
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL:"<<endl;
+}
+int main() {
+    addNode(10);
+    addNode(20);
+    addNode(30);
+    addNode(40);
+    addNode(50);
+    cout << "Original List: "; printList();
+    deleteAtStart();
+    cout << "After deleting first node: "; 
+	printList();
+    deleteAtPosition(4);
+    cout << "After deleting node at position 4: "; 
+	printList();
+    deleteAtEnd();
+    cout << "After deleting last node: "; 
+	printList();
+    return 0;
+}
+                          ..................LAB#05......................
+                                    <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node
+ {
+    int data;
+    Node* next;
+    Node* prev;
+};
+void insertEnd(Node*& head, int value) 
+{
+    Node* newNode = new Node{value, NULL, NULL};
+    if (!head) 
+	{ 
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) 
+	{ 
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+void deleteAtStart(Node*& head) {
+    if (!head) {
+        cout << "List is empty!:"<<endl;
+        return;
+    }
+    Node* temp = head;
+    head = head->next; 
+    if (head) head->prev = NULL; 
+    delete temp; 
+}
+void printList(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+int main()
+ {
+    Node* head = NULL;
+    insertEnd(head, 10);
+    insertEnd(head, 20);
+    insertEnd(head, 30);
+    cout << "Original List: ";
+    printList(head);
+    deleteAtStart(head);
+    cout << "After Deletion: ";
+    printList(head);
+    return 0;
+}
+                                <<<<<<< TASK 02 >>>>>>>
+  #include <iostream>
+using namespace std;
+struct Node
+ {
+    int data;
+    Node* next;
+    Node* prev;
+};
+void insertEnd(Node*& head, int value) 
+{
+    Node* newNode = new Node{value, NULL, NULL}; 
+    if (!head) 
+	{ 
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) temp = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+void deleteAtPosition(Node*& head, int pos) 
+{
+    if (!head) {
+        cout << "List is empty!:"<<endl;
+        return;
+    }
+    Node* temp = head;
+    for (int i = 1; temp && i < pos; i++) 
+        temp = temp->next;
+    if (!temp)
+	 {
+        cout << "Invalid position!";
+        return;
+    }
+    if (temp->prev) temp->prev->next = temp->next;
+    if (temp->next) temp->next->prev = temp->prev;
+    if (pos == 1) head = temp->next;
+    delete temp;
+}
+void printList(Node* head) 
+{
+    while (head) 
+	{
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main() 
+{
+    Node* head = NULL;
+    insertEnd(head, 10);
+    insertEnd(head, 20);
+    insertEnd(head, 30);
+    insertEnd(head, 40);
+    cout << "Original List: ";
+    printList(head);
+    deleteAtPosition(head, 2); 
+    cout << "After Deletion: ";
+    printList(head);
+    return 0;
+}
+                               <<<<<<< TASK 03 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node
+ {
+    int data;
+    Node* next;
+    Node* prev;
+};
+
+void insert(Node*& head, int value)
+ {
+    Node* newNode = new Node{value, NULL, NULL};
+    if (!head)
+	 { 
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) temp = temp->next; 
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+void deleteLast(Node*& head) 
+{
+    if (!head) 
+	{
+        cout << "List is empty!";
+        return;
+    }
+    if (!head->next) 
+	{ 
+        delete head;
+        head = NULL;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) temp = temp->next; 
+    temp->prev->next = NULL;
+    delete temp;
+}
+void print(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+int main() 
+{
+    Node* head = NULL;
+    insert(head, 10);
+    insert(head, 20);
+    insert(head, 30);
+    insert(head, 40);
+    cout << "Original List: ";
+    print(head);
+    deleteLast(head); 
+    cout << "After Deletion: ";
+    print(head);
+    return 0;
+}
+                                 ..................LAB#06......................
+                                 ...............FOR INSERTION CODES............
+                                          <<<<<<< TASK 01 >>>>>>>
+
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+void insertAtStart(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+    } else {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+        head = newNode;
+    }
+}
+void display() {
+    if (head == NULL) {
+        cout << "List is empty." << endl;
+        return;
+    }
+    Node* temp = head;
+    cout << "Circular Doubly Linked List: "<<endl;
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+int main() {
+    insertAtStart(30);
+    insertAtStart(20);
+    insertAtStart(10);
+    display(); 
+    return 0;
+}
+                                <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+void insertAtPosition(int value, int position) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL && position == 1) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+        return;
+    }
+    if (position == 1) {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    int count = 1;
+    while (count < position - 1 && temp->next != head) {
+        temp = temp->next;
+        count++;
+    }
+    Node* nextNode = temp->next;
+    newNode->next = nextNode;
+    newNode->prev = temp;
+    temp->next = newNode;
+    nextNode->prev = newNode;
+}
+
+void display() {
+    if (head == NULL) {
+        cout << "List is empty." << endl;
+        return;
+    }
+    Node* temp = head;
+    cout << "Circular Doubly Linked List: "<<endl;
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+int main() {
+    insertAtPosition(20, 1); 
+    insertAtPosition(40, 2);
+    insertAtPosition(10, 1);
+    insertAtPosition(30, 3); 
+    display(); 
+    return 0;
+}
+                               <<<<<<< TASK 03 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+
+void insertAtEnd(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+    } else {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+    }
+}
+void display() {
+    if (head == NULL) {
+        cout << "List is empty." << endl;
+        return;
+    }
+    Node* temp = head;
+    cout << "Circular Doubly Linked List: ";
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+int main() {
+    insertAtEnd(10);
+    insertAtEnd(20);
+    insertAtEnd(30);
+    insertAtEnd(40);
+    display();  
+    return 0;
+}
+                                 ...............FOR DELETION CODES............
+                                          <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+
+void insertAtEnd(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+    } else {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+    }
+}
+void deleteAtStart() {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    if (head->next == head) {
+        delete head;
+        head = NULL;
+    } else {
+        Node* temp = head;
+        head = head->next;
+        head->prev = temp->prev;
+        temp->prev->next = head;
+        delete temp;
+    }
+}
+
+void display() {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    Node* temp = head;
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+
+int main() {
+    insertAtEnd(10);
+    insertAtEnd(20);
+    insertAtEnd(30);
+    cout << "Before deletion: ";
+    display();
+    deleteAtStart();
+    cout << "After deletion: ";
+    display();
+    return 0;
+}
+                                  <<<<<<< TASK 02 >>>>>>>
+  #include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+void insertAtEnd(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+    } else {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+    }
+}
+void deleteAtPosition(int position) {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    Node* temp = head;
+    int count = 1;
+    while (count < position && temp->next != head) {
+        temp = temp->next;
+        count++;
+    }
+    if (count != position) {
+        cout << "Position out of range.\n";
+        return;
+    }
+    if (temp == head && temp->next == head) {
+        delete temp;
+        head = NULL;
+    } else {
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        if (temp == head) {
+            head = temp->next;  
+        }
+        delete temp;
+    }
+}
+void display() {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    Node* temp = head;
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+
+int main() {
+    insertAtEnd(10);
+    insertAtEnd(20);
+    insertAtEnd(30);
+    insertAtEnd(40);
+    cout << "Before deletion: ";
+    display();
+    deleteAtPosition(3); 
+    cout << "After deletion: ";
+    display();
+    return 0;
+}
+                                         <<<<<<< TASK 03 >>>>>>>
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+Node* head = NULL;
+void insertAtEnd(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        head = newNode;
+    } else {
+        Node* tail = head->prev;
+        newNode->next = head;
+        newNode->prev = tail;
+        tail->next = newNode;
+        head->prev = newNode;
+    }
+}
+void deleteAtEnd() {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    if (head->next == head) {
+        delete head;
+        head = NULL;
+    } else {
+        Node* tail = head->prev;
+        Node* newTail = tail->prev;
+        newTail->next = head;
+        head->prev = newTail;
+        delete tail;
+    }
+}
+void display() {
+    if (head == NULL) {
+        cout << "List is empty.\n";
+        return;
+    }
+    Node* temp = head;
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != head);
+    cout << endl;
+}
+
+int main() {
+    insertAtEnd(10);
+    insertAtEnd(20);
+    insertAtEnd(30);
+    cout << "Before deletion: ";
+    display();
+    deleteAtEnd();
+    cout << "After deletion: ";
+    display();
+    return 0;
+}
+                                   <<<<<<< lab 07 >>>>>>>
+                                      <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+
+int stack[3];  
+int top = -1;  
+
+void addPlate(int plate)
+ {
+    if (top == 2) 
+	{ 
+        cout << "Stack is full. Can't add more plates." << endl;
+    } else {
+        stack[++top] = plate;  
+        cout << "Plate " << plate << " added to the stack." << endl;
+    }
+}
+
+void removePlate()
+ {
+    if (top == -1) 
+	{  
+        cout << "Stack is empty. Can't remove plates." << endl;
+    } else 
+	{
+        cout << "Plate " << stack[top--] << " removed from the stack." << endl;
+    }
+}
+
+void checkTop() 
+{
+    if (top == -1)
+	 {  
+        cout << "Stack is empty. No plates to check." << endl;
+    } else {
+        cout << "Plate " << stack[top] << " is on top of the stack." << endl;
+    }
+}
+
+int main() {
+    addPlate(1); 
+    addPlate(2);  
+    addPlate(3);  
+    addPlate(4);  
+
+    checkTop();    
+
+    removePlate(); 
+    removePlate(); 
+
+    checkTop();    
+
+    removePlate(); 
+    removePlate(); 
+
+    return 0;
+}
+                                <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+
+struct Node {
+    char item[50];
+    Node* next;
+};
+
+void addItem(Node*& head, const char* item) {
+    Node* newNode = new Node;
+    int i = 0;
+
+    while (item[i] != '0') {
+        newNode->item[i] = item[i];
+        i++;
+    }
+    newNode->item[i] = '0';
+
+    newNode->next = head;
+    head = newNode;
+}
+
+void removeItem(Node*& head, const char* item) {
+    Node* temp = head;
+    Node* prev = nullptr;
+
+    while (temp != nullptr) {
+        int i = 0;
+        bool match = true;
+        while (item[i] != '0' && temp->item[i] != '0') {
+            if (item[i] != temp->item[i]) {
+                match = false;
+                break;
+            }
+            i++;
+        }
+
+        if (match && item[i] == '0' && temp->item[i] == '0') {
+            if (prev == nullptr) {
+                head = temp->next;
+                delete temp;
+                return;
+            } else {
+                prev->next = temp->next;
+                delete temp;
+                return;
+            }
+        }
+
+        prev = temp;
+        temp = temp->next;
+    }
+}
+
+void displayList(Node* head) {
+    if (head == nullptr) {
+        cout << "The list is empty." << endl;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->item << endl;
+        temp = temp->next;
+    }
+}
+
+int main() {
+    Node* head = nullptr;
+
+    addItem(head, "Milk");
+    addItem(head, "Bread");
+    addItem(head, "Eggs");
+
+    cout << "Shopping List:" << endl;
+    displayList(head);
+
+    cout << "Removing Bread from the list..." << endl;
+    removeItem(head, "Bread");
+
+    cout << "Updated Shopping List:" << endl;
+    displayList(head);
+
+    return 0;
+}
+                                         <<<<<<< lab 09 >>>>>>>
+                                      <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+const int MAX = 100;
+class OrderQueue {
+ int orders[MAX];
+ int front, rear;
+public:
+ OrderQueue() {
+ front = rear = -1;
+ }
+ void addOrder(int orderNumber) {
+ if (rear == MAX - 1) {
+ cout << "Queue is full!" << endl;
+ return;
+ }
+ if (front == -1) front = 0;
+ rear++;
+ orders[rear] = orderNumber;
+ cout << "Order " << orderNumber << " added to the queue." << endl;
+ }
+ void processOrder() {
+ if (front == -1 || front > rear) {
+ cout << "No orders to process." << endl;
+ return;
+ }
+ cout << "Order " << orders[front] << " is being processed." << endl;
+ front++;
+ }
+ void showOrders() {
+ if (front == -1 || front > rear) {
+ cout << "No orders in the queue." << endl;
+ return;
+ }
+ cout << "Current Orders: ";
+ for (int i = front; i <= rear; i++) {
+ cout << orders[i] << " ";
+ }
+ cout << endl;
+ }
+};
+int main() {
+ OrderQueue queue;
+ int choice, orderNum;
+ while (true) {
+ cout << "\n1. Add Order\n2. Process Order\n3. Show Orders\n4. Exit\n";
+ cout << "Enter your choice: ";
+ cin >> choice;
+ if (choice == 1) {
+ cout << "Enter order number: ";
+ cin >> orderNum;
+ queue.addOrder(orderNum);
+ } else if (choice == 2) {
+ queue.processOrder();
+ } else if (choice == 3) {
+ queue.showOrders();
+ } else if (choice == 4) {
+ cout << "Exiting program." << endl;
+ break;
+ } else {
+ cout << "Invalid choice! Please enter 1-4." << endl;
+ }
+ }
+ return 0;
+}
+                                   <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+ int bookingID;
+ Node* next;
+};
+Node* front = NULL;
+Node* rear = NULL;
+void add(int id) {
+ Node* newNode = new Node();
+ newNode->bookingID = id;
+ newNode->next = NULL;
+ if (rear == NULL) {
+ front = rear = newNode;
+ } else {
+ rear->next = newNode;
+ rear = newNode;
+ }
+ cout << "Booking " << id << " added."<<endl;
+}
+void process() {
+ if (front == NULL) {
+ cout << "No bookings to process."<<endl;
+ return;
+ }
+ cout << "Processing booking " << front->bookingID << endl;
+ Node* temp = front;
+ front = front->next;
+ if (front == NULL) rear = NULL;
+ delete temp;
+}
+void show() {
+ if (front == NULL) {
+ cout << "No bookings in queue."<<endl;
+ return;
+ }
+ cout << "Current bookings: ";
+ Node* temp = front;
+ while (temp != NULL) {
+ cout << temp->bookingID << " ";
+ temp = temp->next;
+ }
+ cout << endl;
+}
+int main() {
+ int choice, id;
+ while (true) {
+ cout << "\n1. Add Booking\n2. Process Booking\n3. Show Bookings\n4. Exit\n";
+ cout << "Choice: ";
+ cin >> choice;
+ if (choice == 1) {
+ cout << "Enter booking ID: ";
+ cin >> id;
+ add(id);
+ } else if (choice == 2) {
+ process();
+ } else if (choice == 3) {
+ show();
+ } else if (choice == 4) {
+ cout << "Goodbye!"<<endl;
+ break;
+ } else {
+ cout << "Invalid choice."<<endl;
+ }
+ }
+ return 0;
+}
+                                                 <<<<<<< lab 11 >>>>>>>
+                                            <<<<<<< TASK 01 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+ char data;
+ Node* left;
+ Node* right;
+ Node(char val) {
+ data = val;
+ left = NULL;
+ right = NULL;
+ }
+};
+void preorder(Node* root) {
+ if (root == NULL) return;
+ cout << root->data << " ";
+ preorder(root->left);
+ preorder(root->right);
+}
+void inorder(Node* root) {
+ if (root == NULL) return;
+ inorder(root->left);
+ cout << root->data << " ";
+ inorder(root->right);
+}
+void postorder(Node* root) {
+ if (root == NULL) return;
+ postorder(root->left);
+ postorder(root->right);
+ cout << root->data << " ";
+}
+int main() {
+ Node* A = new Node('A');
+ Node* B = new Node('B');
+ Node* C = new Node('C');
+ Node* D = new Node('D');
+ Node* E = new Node('E');
+ Node* F = new Node('F');
+ Node* G = new Node('G');
+ Node* H = new Node('H');
+ Node* I = new Node('I');
+ A->left = B; A->right = C;
+ B->left = D; B->right = E;
+ C->left = F; C->right = G;
+ D->left = H; D->right = I;
+ cout << "Pre-order: ";
+ preorder(A);
+ cout << endl;
+ cout << "In-order: ";
+ inorder(A);
+ cout << endl;
+ cout << "Post-order: ";
+ postorder(A);
+ cout << endl;
+ return 0;
+}
+                                                  <<<<<<< TASK 02 >>>>>>>
+#include <iostream>
+using namespace std;
+struct Node {
+ int data;
+ Node* left;
+ Node* right;
+ Node(int val) {
+ data = val;
+ left = NULL;
+ right = NULL;
+ }
+};
+void preorder(Node* root) {
+ if (root == NULL) return;
+ cout << root->data << " ";
+ preorder(root->left);
+ preorder(root->right);
+}
+void inorder(Node* root) {
+ if (root == NULL) return;
+ inorder(root->left);
+ cout << root->data << " ";
+ inorder(root->right);
+}
+void postorder(Node* root) {
+ if (root == NULL) return;
+ postorder(root->left);
+ postorder(root->right);
+ cout << root->data << " ";
+}
+int main() {
+ Node* root = new Node(1);
+ root->left = new Node(2);
+ root->right = new Node(3);
+ root->left->left = new Node(5);
+ root->left->right = new Node(6);
+ root->right->left = new Node(8);
+ root->right->right = new Node(7);
+ cout << "Pre-order: ";
+ preorder(root);
+ cout << "\nIn-order: ";
+ inorder(root);
+ cout << "\nPost-order: ";
+ postorder(root);
+ cout << endl;
+ return 0;
+}
+                                                            <<<<<<< lab 12 >>>>>>>
+                                            <<<<<<< TASK 01 >>>>>>>
+// MARYAM SAEED (57169)
+#include <iostream>
+using namespace std;
+struct Book {
+ int id;
+ char title[100];
+ char author[100];
+ int year;
+ Book* left;
+ Book* right;
+};
+Book* createBook(int id, const char title[], const char author[], int year) {
+ Book* newBook = new Book;
+ newBook->id = id;
+ int i = 0;
+ while (title[i] != '0') {
+ newBook->title[i] = title[i];
+ i++;
+ }
+ newBook->title[i] = '0';
+ i = 0;
+ while (author[i] != '0') {
+ newBook->author[i] = author[i];
+ i++;
+ }
+ newBook->author[i] = '0';
+ newBook->year = year;
+ newBook->left = NULL;
+ newBook->right = NULL;
+ return newBook;
+}
+Book* insertBook(Book* root, int id, const char title[], const char author[], int year) {
+ if (root == NULL) {
+ return createBook(id, title, author, year);
+ }
+ if (id < root->id) {
+ root->left = insertBook(root->left, id, title, author, year);
+ } else if (id > root->id) {
+ root->right = insertBook(root->right, id, title, author, year);
+ } else {
+ cout << "Book ID already exists!\n";
+ }
+ return root;
+}
+void displayBook(Book* book) {
+ if (book != NULL) {
+ cout << "ID: " << book->id << "\n";
+ cout << "Title: " << book->title << "\n";
+ cout << "Author: " << book->author << "\n";
+ cout << "Year: " << book->year << "\n";
+ }
+}
+Book* searchBook(Book* root, int id) {
+ if (root == NULL || root->id == id) {
+ return root;
+ }
+ if (id < root->id) {
+ return searchBook(root->left, id);
+ } else {
+ return searchBook(root->right, id);
+ }
+}
+Book* findMin(Book* root) {
+ while (root && root->left != NULL) {
+ root = root->left;
+ }
+ return root;
+}
+Book* deleteBook(Book* root, int id) {
+ if (root == NULL) {
+ return NULL;
+ }
+ if (id < root->id) {
+ root->left = deleteBook(root->left, id);
+ } else if (id > root->id) {
+ root->right = deleteBook(root->right, id);
+ } else {
+ if (root->left == NULL) {
+ Book* temp = root->right;
+ delete root;
+ return temp;
+ } else if (root->right == NULL) {
+ Book* temp = root->left;
+ delete root;
+ return temp;
+ }
+ Book* temp = findMin(root->right);
+ root->id = temp->id;
+ for (int i = 0; temp->title[i] != '0'; i++) root->title[i] = temp->title[i];
+ for (int i = 0; temp->author[i] != '0'; i++) root->author[i] = temp->author[i];
+ root->year = temp->year;
+ root->right = deleteBook(root->right, temp->id);
+ }
+ return root;
+}
+void inOrder(Book* root) {
+ if (root != NULL) {
+ inOrder(root->left);
+ displayBook(root);
+ cout << "-----------------\n";
+ inOrder(root->right);
+ }
+}
+void preOrder(Book* root) {
+ if (root != NULL) {
+ displayBook(root);
+ cout << "-----------------\n";
+ preOrder(root->left);
+ preOrder(root->right);
+ }
+}
+void postOrder(Book* root) {
+ if (root != NULL) {
+ postOrder(root->left);
+ postOrder(root->right);
+ displayBook(root);
+ cout << "-----------------\n";
+ }
+}
+int main() {
+ Book* root = NULL;
+ int choice, id, year;
+ char title[100], author[100];
+ while (true) {
+ cout << "\n--- Library Menu ---\n";
+ cout << "1. Insert Book\n";
+ cout << "2. Search Book by ID\n";
+ cout << "3. Delete Book by ID\n";
+ cout << "4. Display In-order\n";
+ cout << "5. Display Pre-order\n";
+ cout << "6. Display Post-order\n";
+ cout << "7. Exit\n";
+ cout << "Enter your choice: ";
+ cin >> choice;
+ switch (choice) {
+ case 1:
+ cout << "Enter Book ID: ";
+ cin >> id;
+ cout << "Enter Title: ";
+ cin.ignore();
+ cin.getline(title, 100);
+ cout << "Enter Author: ";
+ cin.getline(author, 100);
+ cout << "Enter Year of Publication: ";
+ cin >> year;
+ root = insertBook(root, id, title, author, year);
+ break;
+ case 2:
+ cout << "Enter Book ID to search: ";
+ cin >> id;
+ {
+ Book* found = searchBook(root, id);
+ if (found != NULL) {
+ cout << "\nBook Found:\n";
+ displayBook(found);
+ } else {
+ cout << "Book not found.\n";
+ }
+ }
+ break;
+ case 3:
+ cout << "Enter Book ID to delete: ";
+ cin >> id;
+ root = deleteBook(root, id);
+ break;
+ case 4:
+ cout << "\nIn-order Traversal:\n";
+ inOrder(root);
+ break;
+ case 5:
+ cout << "\nPre-order Traversal:\n";
+ preOrder(root);
+ break;
+ case 6:
+ cout << "\nPost-order Traversal:\n";
+ postOrder(root);
+ break;
+ case 7:
+ cout << "Exiting...\n";
+ return 0;
+ default:
+ cout << "Invalid choice. Try again.\n";
+ }
+ }
+ return 0;
+}
+                                     <<<<<<< TASK 02 >>>>>>>
+// MARYAM SAEED (57169)
+#include <iostream>
+using namespace std;
+class Employee {
+public:
+ int number;
+ string name;
+ double salary;
+ Employee* left;
+ Employee* right;
+ Employee(int num, string empName, double empSalary) {
+ number = num;
+ name = empName;
+ salary = empSalary;
+ left = NULL;
+ right = NULL;
+ }
+};
+Employee* insertEmployee(Employee* root, int number, string name, double salary) {
+ if (root == NULL) {
+ return new Employee(number, name, salary);
+ }
+ if (number < root->number) {
+ root->left = insertEmployee(root->left, number, name, salary);
+ } else if (number > root->number) {
+ root->right = insertEmployee(root->right, number, name, salary);
+ } else {
+ cout << "Employee number " << number << " already exists." << endl;
+ }
+ return root;
+}
+Employee* searchEmployee(Employee* root, int number) {
+ if (root == NULL || root->number == number) {
+ return root;
+ }
+ if (number < root->number) {
+ return searchEmployee(root->left, number);
+ }
+ return searchEmployee(root->right, number);
+}
+Employee* findMin(Employee* root) {
+ while (root && root->left != NULL) {
+ root = root->left;
+ }
+ return root;
+}
+Employee* deleteEmployee(Employee* root, int number) {
+ if (root == NULL) {
+ return NULL;
+ }
+ if (number < root->number) {
+ root->left = deleteEmployee(root->left, number);
+ } else if (number > root->number) {
+ root->right = deleteEmployee(root->right, number);
+ } else {
+
+ if (root->left == NULL) {
+ Employee* temp = root->right;
+ delete root;
+ return temp;
+ } else if (root->right == NULL) {
+ Employee* temp = root->left;
+ delete root;
+ return temp;
+ }
+ Employee* temp = findMin(root->right);
+ root->number = temp->number;
+ root->name = temp->name;
+ root->salary = temp->salary;
+ root->right = deleteEmployee(root->right, temp->number);
+ }
+ return root;
+}
+void inOrder(Employee* root) {
+ if (root != NULL) {
+ inOrder(root->left);
+ cout << "Employee Number: " << root->number << ", Name: " << root->name << ", Salary:
+" << root->salary << endl;
+ inOrder(root->right);
+ }
+}
+void preOrder(Employee* root) {
+ if (root != NULL) {
+ cout << "Employee Number: " << root->number << ", Name: " << root->name << ", Salary:
+" << root->salary << endl;
+ preOrder(root->left);
+ preOrder(root->right);
+ }
+}
+void postOrder(Employee* root) {
+ if (root != NULL) {
+ postOrder(root->left);
+ postOrder(root->right);
+ cout << "Employee Number: " << root->number << ", Name: " << root->name << ", Salary:
+" << root->salary << endl;
+ }
+}
+int main() {
+ Employee* root = NULL;
+ int choice, number;
+ string name;
+ double salary;
+ while (true) {
+ cout << "--- Employee Database ---" << endl;
+ cout << "1. Insert Employee" << endl;
+ cout << "2. Search Employee by Number" << endl;
+ cout << "3. Delete Employee by Number" << endl;
+ cout << "4. Display In-order Traversal" << endl;
+ cout << "5. Display Pre-order Traversal" << endl;
+ cout << "6. Display Post-order Traversal" << endl;
+ cout << "7. Exit" << endl;
+ cout << "Enter your choice: ";
+ cin >> choice;
+ switch (choice) {
+ case 1:
+ cout << "Enter Employee Number: ";
+ cin >> number;
+ cout << "Enter Employee Name: ";
+ cin.ignore();
+ getline(cin, name);
+ cout << "Enter Employee Salary: ";
+ cin >> salary;
+ root = insertEmployee(root, number, name, salary);
+ break;
+ case 2:
+ cout << "Enter Employee Number to search: ";
+ cin >> number;
+ {
+ Employee* found = searchEmployee(root, number);
+ if (found != NULL) {
+ cout << "Employee Found:" << endl;
+ cout << "Employee Number: " << found->number << ", Name: " << found-
+>name << ", Salary: " << found->salary << endl;
+ } else {
+ cout << "Employee not found." << endl;
+ }
+ }
+ break;
+ case 3:
+ cout << "Enter Employee Number to delete: ";
+ cin >> number;
+ root = deleteEmployee(root, number);
+ break;
+ case 4:
+ cout << "In-order Traversal:" << endl;
+ inOrder(root);
+ break;
+ case 5:
+ cout << "Pre-order Traversal:" << endl;
+ preOrder(root);
+ break;
+ case 6:
+ cout << "Post-order Traversal:" << endl;
+ postOrder(root);
+ break;
+ case 7:
+ cout << "Exiting..." << endl;
+ return 0;
+ default:
+ cout << "Invalid choice. Try again." << endl;
+ }
+ }
+ return 0;
+}
+
+
